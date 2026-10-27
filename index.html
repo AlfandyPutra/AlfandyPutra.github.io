@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio Alfandy Jaelani Putra — Software Engineering.">
+  <meta name="author" content="Alfandy Jaelani Putra">
+  <title>Alfandy Jaelani Putra — Software Engineering</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./assets/Favicon.png">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap"
+    rel="stylPortofolioesheet">
+
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- HEADER / NAVIGATION BAR                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <!-- Logo -->
+      <div class="header__left">
+        <a class="header__logo" href="#">
+          <span class="material-symbols-outlined header__logo-icon">terminal</span>
+          <span class="header__logo-text">SYS.ENG // CORE</span>
+        </a>
+        <!-- Status Badge -->
+        <div class="header__status-badge">
+          <span class="pulse-dot"></span>
+          <span class="header__status-text">OPEN TO WORK</span>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="header__nav" id="desktop-nav">
+        <a class="nav-link active" href="#profil" data-section="profil">Profil</a>
+        <a class="nav-link" href="#proyek" data-section="proyek">Proyek</a>
+        <a class="nav-link" href="#pengalaman" data-section="pengalaman">Pengalaman</a>
+        <a class="nav-link" href="#sertifikasi" data-section="sertifikasi">Sertifikasi</a>
+        <a class="nav-link" href="#kontak" data-section="kontak">Kontak</a>
+      </nav>
+
+      <!-- Right Actions -->
+      <div class="header__right">
+        <a class="btn btn--primary btn--sm header__download-btn" href="#download-cv">
+          <span class="material-symbols-outlined btn__icon">download</span>
+          <span>Download CV</span>
+        </a>
+        <div class="header__avatar">
+          <span class="material-symbols-outlined">person</span>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+          <span class="mobile-menu-btn__bar"></span>
+          <span class="mobile-menu-btn__bar"></span>
+          <span class="mobile-menu-btn__bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav">
+      <a class="mobile-nav__link active" href="#profil" data-section="profil">Profil</a>
+      <a class="mobile-nav__link" href="#proyek" data-section="proyek">Proyek</a>
+      <a class="mobile-nav__link" href="#pengalaman" data-section="pengalaman">Pengalaman</a>
+      <a class="mobile-nav__link" href="#sertifikasi" data-section="sertifikasi">Sertifikasi</a>
+      <a class="mobile-nav__link" href="#kontak" data-section="kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT                                                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- ─────────────────────────────────────────────────────── -->
+    <!-- SECTION 1: PROFIL & HERO                                -->
+    <!-- ─────────────────────────────────────────────────────── -->
+    <section class="section section--hero" id="profil">
+      <!-- Ambient Backdrop Glow -->
+      <div class="hero-glow"></div>
+
+      <div class="container">
+        <div class="hero__grid">
+          <!-- Hero Content -->
+          <div class="hero__content reveal">
+            <!-- Live Status Badge -->
+            <div class="status-badge">
+              <span class="pulse-dot pulse-dot--lg"></span>
+              <span class="status-badge__text">AVAILABLE FOR CONTRACT & LEAD ROLES</span>
+            </div>
+
+            <!-- Name & Title -->
+            <div class="hero__titles">
+              <h1 class="hero__name">Alfandy Jaelani Putra</h1>
+              <p class="hero__role">Software Engineer</p>
+            </div>
+
+            <!-- Description -->
+            <p class="hero__description">
+              Membangun sistem microservices terdistribusi berlatensi rendah, infrastruktur cloud-native elastis, dan
+              antarmuka web performan tinggi.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="hero__cta">
+              <a class="btn btn--primary" href="#proyek">
+                <span class="material-symbols-outlined btn__icon">rocket_launch</span>
+                <span>Lihat Proyek</span>
+              </a>
+              <a class="btn btn--ghost" href="#download-cv">
+                <span class="material-symbols-outlined btn__icon">download</span>
+                <span>CV Ringkas</span>
+              </a>
+              <a class="btn btn--subtle" href="#kontak">
+                <span class="material-symbols-outlined btn__icon">mail</span>
+                <span>Hubungi</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Developer ID Card -->
+          <div class="hero__card reveal">
+            <div class="dev-card">
+              <div class="dev-card__image-wrapper">
+                <img class="dev-card__image"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC61uD8tzbq9DZ4qfqCv2V3mDqGZl2SEX_GRfmHTABuKwqs6AqbzEx1Jq9AVOdK2C_12KPAPDmmbANN4JRl22piMq6l_u6PbSCRZTIWB8rD5hqThZD6iJY7dmX-jAB1y7VGJH3h8Jo51_yYG9Ne6BMJgb0aEmoIaOp1GXA2CYfKEsuKckQZyiT3LVAxUQKQ4q6zKvZ2ref6RB618wNAqLkJ3Z3gPCvPZbN59eWz7DdT0hz0VnhbRWaQ"
+                  alt="Reynaldi Pratama — Systems Engineer" loading="eager">
+                <div class="dev-card__tags">
+                  <span class="dev-card__location-tag">JKT-NODE</span>
+                  <span class="dev-card__online-tag">ONLINE</span>
+                </div>
+              </div>
+              <div class="dev-card__info">
+                <span class="dev-card__timezone">Jakarta (UTC+7)</span>
+                <span class="dev-card__stack">Go • Rust • K8s</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────── -->
+    <!-- SECTION 2: PROYEK UNGGULAN                              -->
+    <!-- ─────────────────────────────────────────────────────── -->
+    <section class="section section--projects" id="proyek">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <div class="section-header__left">
+            <div class="section-header__label">
+              <span class="material-symbols-outlined section-header__icon">folder_special</span>
+              <span>SELECTED WORKS // PRODUCTION DEPLOYMENTS</span>
+            </div>
+            <h2 class="section-header__title">Proyek Pilihan</h2>
+          </div>
+          <div class="section-header__metrics">
+            <span class="metric metric--tertiary">$12M+ Volume</span>
+            <span class="metric__separator">•</span>
+            <span class="metric metric--primary">5,000 RPS Peak</span>
+            <span class="metric__separator">•</span>
+            <span class="metric metric--secondary">1.4k+ Stars</span>
+          </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="projects-grid">
+          <!-- Card 1: Nexus Cloud Orchestrator -->
+          <div class="project-card reveal" data-accent="primary">
+            <div class="project-card__header">
+              <div class="project-card__meta">
+                <span class="project-card__category project-card__category--primary">KUBERNETES OPERATOR</span>
+                <span class="project-card__stat project-card__stat--primary">5k Jobs/s • -40% Latency</span>
+              </div>
+              <h3 class="project-card__title">Nexus Cloud Orchestrator</h3>
+              <p class="project-card__desc">
+                Sistem workflow distributed berbasis Kubernetes CRD dengan status streaming real-time via gRPC Protobuf
+                dan WebSockets.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="tech-badges">
+                <span class="tech-badge">Golang</span>
+                <span class="tech-badge">K8s CRD</span>
+                <span class="tech-badge">gRPC</span>
+                <span class="tech-badge">Prometheus</span>
+              </div>
+              <div class="project-card__bottom">
+                <span class="project-card__note project-card__note--tertiary">Zero Single-Point-of-Failure</span>
+                <a class="project-card__link project-card__link--primary" href="#">
+                  Case Study <span class="material-symbols-outlined project-card__link-icon">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: AuraPay Gateway -->
+          <div class="project-card reveal" data-accent="tertiary">
+            <div class="project-card__header">
+              <div class="project-card__meta">
+                <span class="project-card__category project-card__category--tertiary">FINTECH • PAYMENTS</span>
+                <span class="project-card__stat project-card__stat--tertiary">$12M+/bln • 0% Data Loss</span>
+              </div>
+              <h3 class="project-card__title">AuraPay Gateway</h3>
+              <p class="project-card__desc">
+                PCI-DSS Tier 1 gateway settlement multi-kanal menggunakan Redis Redlock dan distributed idempotency
+                keys.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="tech-badges">
+                <span class="tech-badge">Go</span>
+                <span class="tech-badge">Apache Kafka</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Redis</span>
+              </div>
+              <div class="project-card__bottom">
+                <span class="project-card__note">Flash-Sale Traffic Resilient</span>
+                <a class="project-card__link project-card__link--tertiary" href="#">
+                  Case Study <span class="material-symbols-outlined project-card__link-icon">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: PulseTelemetry Agent -->
+          <div class="project-card reveal" data-accent="secondary">
+            <div class="project-card__header">
+              <div class="project-card__meta">
+                <span class="project-card__category project-card__category--secondary">SYSTEMS • KERNEL</span>
+                <span class="project-card__stat project-card__stat--secondary">850+ Stars ★</span>
+              </div>
+              <h3 class="project-card__title">PulseTelemetry Agent</h3>
+              <p class="project-card__desc">
+                Daemon observabilitas eBPF untuk inspeksi transmisi socket TCP level kernel transparan tanpa sidecar
+                proxy.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="tech-badges">
+                <span class="tech-badge">Rust</span>
+                <span class="tech-badge">eBPF</span>
+                <span class="tech-badge">Linux Kernel</span>
+                <span class="tech-badge">OTel</span>
+              </div>
+              <div class="project-card__bottom">
+                <span class="project-card__note">RAM &lt; 15MB</span>
+                <a class="project-card__link project-card__link--secondary" href="#">
+                  GitHub <span class="material-symbols-outlined project-card__link-icon">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Synthetix AI Workspace -->
+          <div class="project-card reveal" data-accent="primary">
+            <div class="project-card__header">
+              <div class="project-card__meta">
+                <span class="project-card__category project-card__category--primary">AI • SEARCH</span>
+                <span class="project-card__stat project-card__stat--primary">Sub-80ms RAG</span>
+              </div>
+              <h3 class="project-card__title">Synthetix AI Workspace</h3>
+              <p class="project-card__desc">
+                Multi-agent RAG platform dengan dense embeddings pgvector, BM25 hybrid search, dan cross-encoder
+                reranking.
+              </p>
+            </div>
+            <div class="project-card__footer">
+              <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Next.js 14</span>
+                <span class="tech-badge">pgvector</span>
+                <span class="tech-badge">LangChain</span>
+              </div>
+              <div class="project-card__bottom">
+                <span class="project-card__note">Enterprise Knowledge</span>
+                <a class="project-card__link project-card__link--primary" href="#">
+                  Live Demo <span class="material-symbols-outlined project-card__link-icon">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────── -->
+    <!-- SECTION 3: PENGALAMAN / CAREER TIMELINE                 -->
+    <!-- ─────────────────────────────────────────────────────── -->
+    <section class="section section--experience" id="pengalaman">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <div class="section-header__left">
+            <div class="section-header__label section-header__label--secondary">
+              <span class="material-symbols-outlined section-header__icon">timeline</span>
+              <span>CAREER TIMELINE</span>
+            </div>
+            <h2 class="section-header__title">Rekam Jejak & Pengalaman</h2>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <!-- Role 1: Current -->
+          <div class="timeline__item reveal">
+            <div class="timeline__node timeline__node--active"></div>
+            <div class="timeline__card">
+              <div class="timeline__card-header">
+                <div class="timeline__role-info">
+                  <span class="timeline__role-title">Lead Software Engineer</span>
+                  <span class="timeline__company timeline__company--primary"> · PT Teknologi Skala Global</span>
+                </div>
+                <span class="timeline__duration">2022 — Sekarang</span>
+              </div>
+              <div class="timeline__achievements">
+                <div class="timeline__achievement">
+                  <span class="material-symbols-outlined timeline__check-icon">check</span>
+                  <span>Memimpin tim 8 engineer, mereduksi latensi checkout p99 sebesar 38% via Redis Cluster & Kafka
+                    microservices.</span>
+                </div>
+                <div class="timeline__achievement">
+                  <span class="material-symbols-outlined timeline__check-icon">check</span>
+                  <span>Efisiensi cloud spend 26% melalui penyesuaian CPU limits k8s dan migrasi AWS Graviton.</span>
+                </div>
+              </div>
+              <div class="tech-badges tech-badges--sm">
+                <span class="tech-badge tech-badge--sm">Golang</span>
+                <span class="tech-badge tech-badge--sm">Kafka</span>
+                <span class="tech-badge tech-badge--sm">AWS EKS</span>
+                <span class="tech-badge tech-badge--sm">Terraform</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 2 -->
+          <div class="timeline__item reveal">
+            <div class="timeline__node"></div>
+            <div class="timeline__card">
+              <div class="timeline__card-header">
+                <div class="timeline__role-info">
+                  <span class="timeline__role-title">Senior Backend Engineer</span>
+                  <span class="timeline__company timeline__company--secondary"> · Finbridge Digital</span>
+                </div>
+                <span class="timeline__duration">2020 — 2022</span>
+              </div>
+              <div class="timeline__achievements">
+                <div class="timeline__achievement">
+                  <span class="material-symbols-outlined timeline__check-icon">check</span>
+                  <span>Eksekusi migrasi database PostgreSQL 1.2TB+ zero-downtime dengan Logical Replication CDC.</span>
+                </div>
+                <div class="timeline__achievement">
+                  <span class="material-symbols-outlined timeline__check-icon">check</span>
+                  <span>Pipeline batch KYC asynchronous AWS SQS & ECS memproses 800k+ dokumen harian compliant
+                    OJK.</span>
+                </div>
+              </div>
+              <div class="tech-badges tech-badges--sm">
+                <span class="tech-badge tech-badge--sm">Node / TS</span>
+                <span class="tech-badge tech-badge--sm">Postgres CDC</span>
+                <span class="tech-badge tech-badge--sm">AWS SQS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Role 3 -->
+          <div class="timeline__item reveal">
+            <div class="timeline__node"></div>
+            <div class="timeline__card">
+              <div class="timeline__card-header">
+                <div class="timeline__role-info">
+                  <span class="timeline__role-title">Full Stack Engineer</span>
+                  <span class="timeline__company"> · NexaLab Studio</span>
+                </div>
+                <span class="timeline__duration">2018 — 2020</span>
+              </div>
+              <div class="timeline__achievements">
+                <div class="timeline__achievement">
+                  <span class="material-symbols-outlined timeline__check-icon">check</span>
+                  <span>Meraih skor Google Lighthouse 95+ (Core Web Vitals) pada 20+ aplikasi web client-facing.</span>
+                </div>
+                <div class="timeline__achievement">
+                  <span class="material-symbols-outlined timeline__check-icon">check</span>
+                  <span>Membangun GraphQL federated gateway memadukan REST microservices dari multi-vendor.</span>
+                </div>
+              </div>
+              <div class="tech-badges tech-badges--sm">
+                <span class="tech-badge tech-badge--sm">React</span>
+                <span class="tech-badge tech-badge--sm">GraphQL</span>
+                <span class="tech-badge tech-badge--sm">Docker</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────── -->
+    <!-- SECTION 4: SERTIFIKASI                                  -->
+    <!-- ─────────────────────────────────────────────────────── -->
+    <section class="section section--certs" id="sertifikasi">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+          <div class="section-header__left">
+            <div class="section-header__label section-header__label--tertiary">
+              <span class="material-symbols-outlined section-header__icon">verified</span>
+              <span>ACCREDITATION & CERTIFICATIONS</span>
+            </div>
+            <h2 class="section-header__title">Sertifikasi Resmi</h2>
+          </div>
+          <div class="section-header__badge">
+            <span class="pulse-dot"></span>
+            <span class="section-header__badge-text">100% Verified Active</span>
+          </div>
+        </div>
+
+        <!-- Certifications Grid -->
+        <div class="certs-grid">
+          <!-- Cert 1 -->
+          <div class="cert-card reveal" data-accent="primary">
+            <div class="cert-card__body">
+              <span class="cert-card__issuer cert-card__issuer--primary">AWS PROFESSIONAL</span>
+              <h3 class="cert-card__title">Solutions Architect Pro</h3>
+              <span class="cert-card__validity">Valid s/d 2026</span>
+            </div>
+            <div class="cert-card__footer">
+              <span class="cert-card__verified">Verified</span>
+              <a class="cert-card__link cert-card__link--primary" href="#">
+                Kredensial <span class="material-symbols-outlined cert-card__link-icon">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 2 -->
+          <div class="cert-card reveal" data-accent="tertiary">
+            <div class="cert-card__body">
+              <span class="cert-card__issuer cert-card__issuer--tertiary">CNCF / LINUX FOUNDATION</span>
+              <h3 class="cert-card__title">Kubernetes Admin (CKA)</h3>
+              <span class="cert-card__validity">Valid s/d 2026</span>
+            </div>
+            <div class="cert-card__footer">
+              <span class="cert-card__verified">Verified</span>
+              <a class="cert-card__link cert-card__link--tertiary" href="#">
+                Kredensial <span class="material-symbols-outlined cert-card__link-icon">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 3 -->
+          <div class="cert-card reveal" data-accent="secondary">
+            <div class="cert-card__body">
+              <span class="cert-card__issuer cert-card__issuer--secondary">GOOGLE CLOUD</span>
+              <h3 class="cert-card__title">Professional Cloud Architect</h3>
+              <span class="cert-card__validity">Valid s/d 2025</span>
+            </div>
+            <div class="cert-card__footer">
+              <span class="cert-card__verified">Verified</span>
+              <a class="cert-card__link cert-card__link--secondary" href="#">
+                Kredensial <span class="material-symbols-outlined cert-card__link-icon">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Cert 4 -->
+          <div class="cert-card reveal" data-accent="primary">
+            <div class="cert-card__body">
+              <span class="cert-card__issuer cert-card__issuer--primary">HASHICORP</span>
+              <h3 class="cert-card__title">Terraform Associate</h3>
+              <span class="cert-card__validity">Valid s/d 2026</span>
+            </div>
+            <div class="cert-card__footer">
+              <span class="cert-card__verified">Verified</span>
+              <a class="cert-card__link cert-card__link--primary" href="#">
+                Kredensial <span class="material-symbols-outlined cert-card__link-icon">open_in_new</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────────── -->
+    <!-- SECTION 5: KONTAK / CALL TO ACTION                      -->
+    <!-- ─────────────────────────────────────────────────────── -->
+    <section class="section section--contact" id="kontak">
+      <div class="container">
+        <div class="contact-card reveal">
+          <!-- Ambient Glow -->
+          <div class="contact-card__glow"></div>
+
+          <span class="contact-card__label">LET'S CONNECT</span>
+          <h2 class="contact-card__title">Mari Bangun Sistem Tangguh Bersama</h2>
+          <p class="contact-card__desc">
+            Terbuka untuk diskusi arsitektur, konsultasi sistem terdistribusi, atau peluang lead engineering.
+          </p>
+
+          <div class="contact-card__actions">
+            <a class="btn btn--primary btn--lg" href="mailto:reynaldi@systems.core">
+              <span class="material-symbols-outlined btn__icon">mail</span>
+              <span>reynaldi@systems.core</span>
+            </a>
+            <button class="btn btn--ghost btn--lg" id="copy-email-btn" type="button">
+              <span class="material-symbols-outlined btn__icon">content_copy</span>
+              <span class="copy-btn-text">Salin Email</span>
+            </button>
+          </div>
+
+          <div class="contact-card__meta">
+            <span>Jakarta (UTC+7)</span>
+            <span>•</span>
+            <span>Response: &lt; 4h</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <!-- Column 1: About -->
+        <div class="footer__about">
+          <div class="footer__brand">
+            <span class="material-symbols-outlined footer__brand-icon">dns</span>
+            <span class="footer__brand-name">Systems & Architecture Node</span>
+          </div>
+          <p class="footer__about-text">
+            Portofolio komputasi terdistribusi, keandalan sistem berskala besar, serta arsitektur backend berkinerja
+            tinggi oleh Senior Systems Engineer.
+          </p>
+          <div class="footer__cluster-status">
+            <span class="pulse-dot pulse-dot--static"></span>
+            <span>CLUSTER STATUS: HEALTHY (99.99%)</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Contact -->
+        <div class="footer__contact">
+          <span class="footer__col-title">Direct Interconnect</span>
+          <div class="footer__contact-links">
+            <a class="footer__email" href="mailto:engineer@systems.core">engineer@systems.core</a>
+            <span class="footer__detail">Jakarta, Indonesia // UTC+7</span>
+            <span class="footer__detail">PGP Key: 0x9F4C18EA</span>
+          </div>
+        </div>
+
+        <!-- Column 3: Tech Stack -->
+        <div class="footer__stack">
+          <span class="footer__col-title">Core Matrix</span>
+          <div class="footer__stack-badges">
+            <span class="footer__stack-badge">Go</span>
+            <span class="footer__stack-badge">Rust</span>
+            <span class="footer__stack-badge">Kubernetes</span>
+            <span class="footer__stack-badge">eBPF</span>
+            <span class="footer__stack-badge">Kafka</span>
+            <span class="footer__stack-badge">gRPC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer__bottom">
+        <span class="footer__copyright">© <span class="current-year">2024</span> Senior Software & Systems Engineer. All
+          systems operational.</span>
+        <nav class="footer__nav">
+          <a class="footer__nav-link" href="#profil">Root</a>
+          <a class="footer__nav-link" href="#proyek">Artifacts</a>
+          <a class="footer__nav-link" href="#kontak">Signal</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
