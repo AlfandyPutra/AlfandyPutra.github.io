@@ -567,6 +567,14 @@ ul, ol { list-style: none; }
 .hero__card {
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .hero__card {
+    justify-content: flex-end;
+  }
 }
 
 .dev-card {
@@ -578,12 +586,14 @@ ul, ol { list-style: none; }
   gap: var(--space-sm);
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-variant);
+  width: 100%;
+  max-width: 320px;
 }
 
 .dev-card__image-wrapper {
   position: relative;
   width: 100%;
-  height: 14rem;
+  aspect-ratio: 5 / 7;
   border-radius: var(--radius-card);
   overflow: hidden;
   background: var(--surface-high);
@@ -593,6 +603,7 @@ ul, ol { list-style: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
 }
 
 .dev-card__tags {
