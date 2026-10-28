@@ -1506,7 +1506,6 @@ body::before {
 }
 
 /* Ensure content sits above background */
-.header,
 .main,
 .footer {
   position: relative;
