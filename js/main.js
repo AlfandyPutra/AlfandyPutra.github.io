@@ -468,6 +468,60 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* --------------------------------------------------------
+   *  9. PDF PREVIEW MODAL
+   * ------------------------------------------------------ */
+  const initPdfModal = () => {
+    const modal = qs('#pdf-modal');
+    if (!modal) return;
+
+    const iframe = qs('#pdf-modal-iframe', modal);
+    const titleEl = qs('#pdf-modal-title', modal);
+    const tabBtn = qs('#pdf-modal-tab', modal);
+    const closeBtn = qs('#pdf-modal-close', modal);
+    const backdrop = qs('#pdf-modal-backdrop', modal);
+    const triggers = qsa('.cert-modal-trigger');
+
+    if (triggers.length === 0) return;
+
+    const openModal = (pdfUrl, title) => {
+      if (titleEl) titleEl.textContent = title || 'Sertifikat';
+      if (tabBtn) tabBtn.setAttribute('href', pdfUrl);
+      if (iframe) iframe.src = pdfUrl;
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (iframe) iframe.src = '';
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pdfUrl = trigger.getAttribute('data-pdf');
+        const title = trigger.getAttribute('data-title');
+        if (pdfUrl) {
+          openModal(pdfUrl, title);
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  };
+
+  /* --------------------------------------------------------
    *  🚀  INITIALISE ALL MODULES
    * ------------------------------------------------------ */
 
@@ -479,4 +533,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initParallaxGlow();
   initCurrentYear();
+  initPdfModal();
 });
