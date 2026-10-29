@@ -488,8 +488,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (tabBtn) tabBtn.setAttribute('href', pdfUrl);
       if (iframe) iframe.src = pdfUrl;
 
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
+      modal.style.display = 'flex';
+      requestAnimationFrame(() => {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
       document.body.style.overflow = 'hidden';
     };
 
@@ -497,7 +500,12 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      if (iframe) iframe.src = '';
+      setTimeout(() => {
+        if (!modal.classList.contains('open')) {
+          modal.style.display = 'none';
+          if (iframe) iframe.src = '';
+        }
+      }, 250);
     };
 
     triggers.forEach((trigger) => {
@@ -505,9 +513,16 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const pdfUrl = trigger.getAttribute('data-pdf');
         const title = trigger.getAttribute('data-title');
-        if (pdfUrl) {
-          openModal(pdfUrl, title);
+        if (!pdfUrl) return;
+
+        // On mobile devices (< 768px), open directly in new tab for the best experience
+        // (Mobile browsers like Android Chrome do not support rendering PDF inside iframes)
+        if (window.innerWidth < 768) {
+          window.open(pdfUrl, '_blank');
+          return;
         }
+
+        openModal(pdfUrl, title);
       });
     });
 
