@@ -944,17 +944,38 @@ ul, ol { list-style: none; }
   letter-spacing: 0.02em;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  transition: opacity var(--transition-fast);
+  gap: 0.35rem;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 .project-card__link--primary   { color: var(--primary); }
 .project-card__link--secondary { color: var(--secondary); }
 .project-card__link--tertiary  { color: var(--tertiary); }
 
-.project-card__link:hover { opacity: 0.8; text-decoration: underline; }
+.project-card__link:hover { 
+  opacity: 0.9; 
+  text-decoration: underline; 
+}
 
-.project-card__link-icon { font-size: 14px; }
+.project-card__github-icon {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform var(--transition-fast);
+}
+
+.project-card__link:hover .project-card__github-icon {
+  transform: scale(1.1);
+}
+
+.project-card__link-icon { 
+  font-size: 13px;
+  transition: transform var(--transition-fast);
+}
+
+.project-card__link:hover .project-card__link-icon {
+  transform: translate(1px, -1px);
+}
 
 /* ────────────────────────────────────────────────────────────
  *  9. TECH BADGES
