@@ -468,8 +468,39 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* --------------------------------------------------------
-   *  9. PDF PREVIEW MODAL
+   *  9. MODAL HELPERS, PDF & PROJECT IMAGE PREVIEW MODALS
    * ------------------------------------------------------ */
+
+  /**
+   * Show a modal overlay with scale/fade transition and body scroll lock.
+   * @param {Element} modal Modal root element
+   */
+  const showModalOverlay = (modal) => {
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+    document.body.style.overflow = 'hidden';
+  };
+
+  /**
+   * Hide a modal overlay cleanly after its CSS transition finishes.
+   * @param {Element} modal Modal root element
+   * @param {Function} [onHidden] Callback after modal finishes hiding
+   */
+  const hideModalOverlay = (modal, onHidden) => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!modal.classList.contains('open')) {
+        modal.style.display = 'none';
+        if (typeof onHidden === 'function') onHidden();
+      }
+    }, 250);
+  };
+
   const initPdfModal = () => {
     const modal = qs('#pdf-modal');
     if (!modal) return;
@@ -487,25 +518,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (titleEl) titleEl.textContent = title || 'Sertifikat';
       if (tabBtn) tabBtn.setAttribute('href', pdfUrl);
       if (iframe) iframe.src = pdfUrl;
-
-      modal.style.display = 'flex';
-      requestAnimationFrame(() => {
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-      });
-      document.body.style.overflow = 'hidden';
+      showModalOverlay(modal);
     };
 
     const closeModal = () => {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      setTimeout(() => {
-        if (!modal.classList.contains('open')) {
-          modal.style.display = 'none';
-          if (iframe) iframe.src = '';
-        }
-      }, 250);
+      hideModalOverlay(modal, () => {
+        if (iframe) iframe.src = '';
+      });
     };
 
     triggers.forEach((trigger) => {
@@ -536,6 +555,157 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  /**
+   * Opens a gallery/image modal when any project card (outside of external
+   * anchor links) or its Preview button is clicked. Supports single or
+   * comma-separated multiple images with keyboard & thumbnail navigation.
+   */
+  const initProjectImageModal = () => {
+    const modal = qs('#image-modal');
+    if (!modal) return;
+
+    const img = qs('#image-modal-img', modal);
+    const titleEl = qs('#image-modal-title', modal);
+    const counterEl = qs('#image-modal-counter', modal);
+    const tabBtn = qs('#image-modal-tab', modal);
+    const closeBtn = qs('#image-modal-close', modal);
+    const backdrop = qs('#image-modal-backdrop', modal);
+    const prevBtn = qs('#image-modal-prev', modal);
+    const nextBtn = qs('#image-modal-next', modal);
+    const thumbsEl = qs('#image-modal-thumbs', modal);
+    const fallbackEl = qs('#image-modal-fallback', modal);
+    const fallbackPathEl = qs('#image-modal-fallback-path', modal);
+    const projectCards = qsa('.project-card[data-images]');
+
+    if (projectCards.length === 0 || !img) return;
+
+    let images = [];
+    let currentIndex = 0;
+
+    const renderImage = () => {
+      const src = images[currentIndex];
+      if (!src) return;
+
+      if (fallbackEl) fallbackEl.style.display = 'none';
+      img.style.display = 'block';
+      img.src = src;
+      img.alt = titleEl ? titleEl.textContent : 'Preview Project';
+
+      if (tabBtn) tabBtn.setAttribute('href', src);
+
+      if (counterEl) {
+        counterEl.textContent = images.length > 1 ? `${currentIndex + 1} / ${images.length}` : '';
+      }
+
+      const showNav = images.length > 1;
+      if (prevBtn) prevBtn.style.display = showNav ? 'flex' : 'none';
+      if (nextBtn) nextBtn.style.display = showNav ? 'flex' : 'none';
+
+      if (thumbsEl) {
+        qsa('.image-modal__thumb', thumbsEl).forEach((thumb, idx) => {
+          thumb.classList.toggle('active', idx === currentIndex);
+        });
+      }
+    };
+
+    const renderThumbs = () => {
+      if (!thumbsEl) return;
+      thumbsEl.innerHTML = '';
+      if (images.length <= 1) return;
+
+      images.forEach((src, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `image-modal__thumb${idx === currentIndex ? ' active' : ''}`;
+        btn.setAttribute('aria-label', `Lihat gambar ${idx + 1}`);
+
+        const thumbImg = document.createElement('img');
+        thumbImg.src = src;
+        thumbImg.alt = `Thumbnail ${idx + 1}`;
+        btn.appendChild(thumbImg);
+
+        btn.addEventListener('click', () => {
+          currentIndex = idx;
+          renderImage();
+        });
+
+        thumbsEl.appendChild(btn);
+      });
+    };
+
+    img.addEventListener('error', () => {
+      if (!img.getAttribute('src')) return;
+      img.style.display = 'none';
+      if (fallbackEl) fallbackEl.style.display = 'flex';
+      if (fallbackPathEl) {
+        fallbackPathEl.textContent = `Simpan gambar di: ${images[currentIndex] || 'project/'}`;
+      }
+    });
+
+    const openModal = (imageList, title) => {
+      images = imageList;
+      currentIndex = 0;
+      if (titleEl) titleEl.textContent = title || 'Preview Project';
+      renderThumbs();
+      renderImage();
+      showModalOverlay(modal);
+    };
+
+    const closeModal = () => {
+      hideModalOverlay(modal, () => {
+        img.removeAttribute('src');
+        if (thumbsEl) thumbsEl.innerHTML = '';
+      });
+    };
+
+    const showPrev = () => {
+      if (images.length <= 1) return;
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      renderImage();
+    };
+
+    const showNext = () => {
+      if (images.length <= 1) return;
+      currentIndex = (currentIndex + 1) % images.length;
+      renderImage();
+    };
+
+    projectCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        // Let external links (e.g. GitHub) open normally without triggering the modal
+        if (e.target.closest('a')) return;
+
+        const rawImages = card.getAttribute('data-images') || '';
+        const imageList = rawImages
+          .split(',')
+          .map((item) => item.trim())
+          .filter(Boolean);
+
+        if (imageList.length === 0) return;
+
+        const title = card.getAttribute('data-title') || 'Preview Project';
+        openModal(imageList, title);
+      });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', showPrev);
+    if (nextBtn) nextBtn.addEventListener('click', showNext);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('open')) return;
+
+      if (e.key === 'Escape') {
+        closeModal();
+      } else if (e.key === 'ArrowLeft') {
+        showPrev();
+      } else if (e.key === 'ArrowRight') {
+        showNext();
+      }
+    });
+  };
+
   /* --------------------------------------------------------
    *  🚀  INITIALISE ALL MODULES
    * ------------------------------------------------------ */
@@ -549,4 +719,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallaxGlow();
   initCurrentYear();
   initPdfModal();
+  initProjectImageModal();
 });
